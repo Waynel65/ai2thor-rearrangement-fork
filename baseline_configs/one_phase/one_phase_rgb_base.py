@@ -19,6 +19,7 @@ from rearrange.sensors import (
 )
 from rearrange.tasks import RearrangeTaskSampler
 
+from ai2thor.platform import CloudRendering
 
 class OnePhaseRGBBaseExperimentConfig(RearrangeBaseExperimentConfig, ABC):
     @classmethod
@@ -91,6 +92,7 @@ class OnePhaseRGBBaseExperimentConfig(RearrangeBaseExperimentConfig, ABC):
                     "renderDepthImage": any(
                         isinstance(s, DepthSensor) for s in sensors
                     ),
+                    "platform": CloudRendering
                 },
             ),
             seed=seed,
