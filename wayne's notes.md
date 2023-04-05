@@ -2,10 +2,12 @@
 
 export CURRENT_TIME=$(date '+%Y-%m-%d_%H-%M-%S') # This is just to record when you ran this inference
 
-allenact baseline_configs/one_phase/one_phase_rgb_resnet_dagger.py \
--c pretrained_model_ckpts/exp_OnePhaseRGBResNetDagger_40proc__stage_00__steps_000050058550.pt \
+```
+allenact baseline_configs/one_phase/one_phase_rgb_clipresnet50_dagger.py \
+-c pretrained_model_ckpts/exp_OnePhaseRGBClipResNet50Dagger_40proc__stage_00__steps_000065083050.pt \
 --extra_tag $CURRENT_TIME \
 --eval
+```
 
 
 #### Cloud-rendering
@@ -44,4 +46,8 @@ allenact baseline_configs/one_phase/one_phase_rgb_resnet_dagger.py \
             **kwargs,
         )
 ```
+
+
+adjust number of processes in training, validation and testing:
+machineparam
 

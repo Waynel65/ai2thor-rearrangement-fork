@@ -192,9 +192,11 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
 
     @classmethod
     def machine_params(cls, mode="train", **kwargs) -> MachineParams:
-        """Return the number of processes and gpu_ids to use with training."""
+        """Return the number of processes and gpu_ids to use"""
         num_gpus = cuda.device_count()
         has_gpu = num_gpus != 0
+
+
 
         sampler_devices = None
         if mode == "train":
@@ -219,6 +221,8 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         nprocesses = split_processes_onto_devices(
             nprocesses=nprocesses, ndevices=len(devices)
         )
+
+        print("wayne: number of processes and devices:", nprocesses, devices)
 
         return MachineParams(
             nprocesses=nprocesses,
