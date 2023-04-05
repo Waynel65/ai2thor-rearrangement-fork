@@ -211,7 +211,7 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
             devices = [num_gpus - 1] if has_gpu else [torch.device("cpu")]
             nprocesses = 2 if has_gpu else 0
         else:
-            nprocesses = 3 if has_gpu else 1 ## wayne: modified from 20 to 3
+            nprocesses = 5 if has_gpu else 1 ## wayne: modified from 20 to 3
             devices = (
                 list(range(min(nprocesses, num_gpus)))
                 if has_gpu
