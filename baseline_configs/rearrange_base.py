@@ -286,7 +286,8 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
             else torch.device("cpu")
         )
         x_display: Optional[str] = None
-        gpu_device: Optional[int] = None
+        # gpu_device: Optional[int] = None
+        gpu_device: Optional[int] = device ## wayne: why not just assign to device to it?
         thor_platform: Optional[ai2thor.platform.BaseLinuxPlatform] = None
         if platform.system() == "Linux":
             try:

@@ -51,3 +51,6 @@ allenact baseline_configs/one_phase/one_phase_rgb_clipresnet50_dagger.py \
 adjust number of processes in training, validation and testing:
 machineparam
 
+
+
+ Saving test metrics in experiment_output/metrics/OnePhaseRGBClipResNet50Dagger_40proc/2023-04-05_19-21-42/2023-04-05_20-28-00/metrics__test_2023-04-05_20-28-00.json
