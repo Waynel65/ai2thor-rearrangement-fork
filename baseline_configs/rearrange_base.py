@@ -202,6 +202,7 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         if mode == "train":
             ## TODO: define the GPU device here
             nprocesses = cls.num_train_processes() if torch.cuda.is_available() else 1
+            print(f"nprocesses: {nprocesses} and num_gpus: {num_gpus}")
             devices = (
                 list(range(min(nprocesses, num_gpus)))
                 if has_gpu

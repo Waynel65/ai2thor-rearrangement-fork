@@ -53,4 +53,32 @@ machineparam
 
 
 
- Saving test metrics in experiment_output/metrics/OnePhaseRGBClipResNet50Dagger_40proc/2023-04-05_19-21-42/2023-04-05_20-28-00/metrics__test_2023-04-05_20-28-00.json
+Saving test metrics in experiment_output/metrics/OnePhaseRGBClipResNet50Dagger_40proc/2023-04-05_19-21-42/2023-04-05_20-28-00/metrics__test_2023-04-05_20-28-00.json
+
+
+i also altered:
+
+  if allowed_rearrange_inds_subset is not None:
+            allowed_rearrange_inds_subset = tuple(allowed_rearrange_inds_subset)
+            assert stage in ["valid", "train_unseen"]
+            scene_to_allowed_rearrange_inds = {
+                scene: allowed_rearrange_inds_subset for scene in allowed_scenes
+            }
+        seed = md5_hash_str_as_int(str(allowed_scenes))
+
+        device = (
+            devices[process_ind % len(devices)]
+            if devices is not None and len(devices) > 0
+            else torch.device("cpu")
+        )
+        x_display: Optional[str] = None
+        # gpu_device: Optional[int] = None
+        gpu_device: Optional[int] = device ## wayne: why not just assign to device to it?
+        thor_platform: Optional[ai2thor.platform.BaseLinuxPlatform] = None
+    
+
+
+
+train model with 
+export PYTHONPATH=$PYTHONPATH:$PWD
+allenact -o rearrange_out -b . baseline_configs/one_phase/one_phase_rgb_clipresnet50_dagger.py
