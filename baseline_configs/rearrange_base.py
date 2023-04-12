@@ -224,7 +224,7 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
             nprocesses=nprocesses, ndevices=len(devices)
         )
 
-        print("wayne: number of processes and devices:", nprocesses, devices)
+        print("wayne: number of processes and devices:", nprocesses, len(devices))
 
         return MachineParams(
             nprocesses=nprocesses,
