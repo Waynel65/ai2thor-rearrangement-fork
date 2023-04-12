@@ -282,14 +282,18 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
             }
         seed = md5_hash_str_as_int(str(allowed_scenes))
 
+        print("wayne in task sampler:")
+        print(f"devices: {devices}")
         device = (
             devices[process_ind % len(devices)]
             if devices is not None and len(devices) > 0
             else torch.device("cpu")
         )
+        print(f"device: {device}")
+
         x_display: Optional[str] = None
-        # gpu_device: Optional[int] = None
-        gpu_device: Optional[int] = device ## wayne: why not just assign to device to it?
+        gpu_device: Optional[int] = None
+        # gpu_device: Optional[int] = device ## wayne: why not just assign to device to it?
         thor_platform: Optional[ai2thor.platform.BaseLinuxPlatform] = None
         if platform.system() == "Linux":
             try:

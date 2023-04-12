@@ -86,6 +86,7 @@ class TwoPhaseRGBBaseExperimentConfig(RearrangeBaseExperimentConfig, ABC):
                     "renderDepthImage": any(
                         isinstance(s, DepthSensor) for s in sensors
                     ),
+                    "platform": CloudRendering
                 },
             ),
             seed=seed,

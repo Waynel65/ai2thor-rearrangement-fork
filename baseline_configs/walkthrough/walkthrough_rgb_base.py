@@ -90,6 +90,7 @@ class WalkthroughBaseExperimentConfig(RearrangeBaseExperimentConfig):
                     **(
                         {} if thor_controller_kwargs is None else thor_controller_kwargs
                     ),
+                    "platform": CloudRendering
                 },
             ),
             seed=seed,
