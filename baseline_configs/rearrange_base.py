@@ -196,7 +196,7 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         num_gpus = cuda.device_count()
         has_gpu = num_gpus != 0
 
-        print("num_gpus:", num_gpus)
+        print("num_gpus:", num_gpus) # 1
 
         sampler_devices = None
         if mode == "train":
