@@ -283,7 +283,6 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         seed = md5_hash_str_as_int(str(allowed_scenes))
 
         print("wayne in task sampler:")
-        print(f"devices: {devices}")
         device = (
             devices[process_ind % len(devices)]
             if devices is not None and len(devices) > 0
@@ -297,6 +296,8 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         thor_platform: Optional[ai2thor.platform.BaseLinuxPlatform] = None
         if platform.system() == "Linux":
             try:
+                print(f"wayne: device is {devices}")
+                print("wayne: trying to get open x displays...")
                 x_displays = get_open_x_displays(throw_error_if_empty=True)
 
                 if devices is not None and len(
@@ -310,13 +311,16 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
                         f" describing how to start an X-display on every GPU."
                     )
                 x_display = x_displays[process_ind % len(x_displays)]
+                print(f"wayne: x_display: {x_display}")
             except IOError:
                 # Could not find an open `x_display`, use CloudRendering instead.
+                print("wayne: could not find open x displays, using cloud rendering...")
                 assert all(
                     [d != torch.device("cpu") and d >= 0 for d in devices]
                 ), "Cannot use CPU devices when there are no open x-displays as CloudRendering requires specifying a GPU."
                 gpu_device = device
                 thor_platform = ai2thor.platform.CloudRendering
+
 
         kwargs = {
             "stage": stage,
