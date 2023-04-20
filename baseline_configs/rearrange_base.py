@@ -246,6 +246,7 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         devices: Optional[List[int]] = None,
         seeds: Optional[List[int]] = None,
         deterministic_cudnn: bool = False,
+        force_x_display: Optional[str] = None,
     ):
         if allowed_scenes is not None:
             scenes = allowed_scenes
@@ -294,7 +295,10 @@ class RearrangeBaseExperimentConfig(ExperimentConfig):
         gpu_device: Optional[int] = None
         # gpu_device: Optional[int] = device ## wayne: why not just assign to device to it?
         thor_platform: Optional[ai2thor.platform.BaseLinuxPlatform] = None
-        if platform.system() == "Linux":
+
+        if force_x_display is not None:
+            x_display = force_x_display
+        elif platform.system() == "Linux":
             try:
                 print(f"wayne: device is {devices}")
                 print("wayne: trying to get open x displays...")
