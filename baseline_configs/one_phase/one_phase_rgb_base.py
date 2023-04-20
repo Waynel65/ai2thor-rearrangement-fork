@@ -92,7 +92,7 @@ class OnePhaseRGBBaseExperimentConfig(RearrangeBaseExperimentConfig, ABC):
                     "renderDepthImage": any(
                         isinstance(s, DepthSensor) for s in sensors
                     ),
-                    # "platform": CloudRendering
+                    "platform": CloudRendering
                 },
             ),
             seed=seed,
